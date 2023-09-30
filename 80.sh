@@ -55,7 +55,10 @@ echo "kernel.unprivileged_bpf_disabled = 1" | sudo tee -a /etc/sysctl.conf
 
 echo "kernel.sysrq = 0" | sudo tee /etc/sysctl.d/99-custom.conf
 echo "kernel.unprivileged_bpf_disabled = 1" | sudo tee -a /etc/sysctl.d/99-custom.conf
-
+echo "fs.protected_fifos = 2" | sudo tee -a /etc/sysctl.conf
+echo "fs.protected_fifos = 2" | sudo tee /etc/sysctl.d/99-protected-fifos.conf
+echo "fs.suid_dumpable = 0" | sudo tee -a /etc/sysctl.conf
+echo "fs.suid_dumpable = 0" | sudo tee /etc/sysctl.d/99-suid-dumpable.conf
 
 sudo sysctl --system
 sudo sysctl -p
